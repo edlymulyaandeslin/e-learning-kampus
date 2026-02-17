@@ -19,6 +19,9 @@ class User extends Authenticatable
      */
     protected $guarded = ['id'];
 
+    public const ROLE_STUDENT = 'student';
+    public const ROLE_LECTURER = 'lecturer';
+
     /**
      * The attributes that should be hidden for serialization.
      *
