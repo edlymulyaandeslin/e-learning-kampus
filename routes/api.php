@@ -3,6 +3,7 @@
 use App\Http\Controllers\API\AssignmentController;
 use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\CourseController;
+use App\Http\Controllers\API\DiscussionController;
 use App\Http\Controllers\API\MaterialController;
 use App\Http\Controllers\API\SubmissionController;
 use Illuminate\Http\Request;
@@ -50,4 +51,10 @@ Route::post('assignments', [AssignmentController::class, 'store'])->middleware('
 Route::middleware('auth:sanctum')->prefix('submissions')->group(function () {
     Route::post('/', [SubmissionController::class, 'store'])->name('submissions.store');
     Route::post('/{id}/grade', [SubmissionController::class, 'grade'])->name('submissions.grade');
+});
+
+// Discussion routes
+Route::middleware('auth:sanctum')->prefix('discussions')->group(function () {
+    Route::post('/', [DiscussionController::class, 'store'])->name('discussions.store');
+    Route::post('/{id}/replies', [DiscussionController::class, 'replies'])->name('discussions.replies');
 });
