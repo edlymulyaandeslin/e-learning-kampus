@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\CourseController;
+use App\Http\Controllers\API\MaterialController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -32,4 +33,9 @@ Route::middleware('auth:sanctum')->prefix('courses')->group(function () {
     Route::put('/{id}', [CourseController::class, 'update'])->name('courses.update');
     Route::delete('/{id}', [CourseController::class, 'destroy'])->name('courses.destroy');
     Route::post('/{id}/enroll', [CourseController::class, 'enroll'])->name('courses.enroll');
+});
+
+Route::middleware('auth:sanctum')->prefix('materials')->group(function () {
+    Route::post('/', [MaterialController::class, 'upload'])->name('materials.upload');
+    Route::get('/{id}/download', [MaterialController::class, 'download'])->name('materials.download');
 });
