@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\API\AssignmentController;
 use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\CourseController;
 use App\Http\Controllers\API\MaterialController;
+use App\Http\Controllers\API\SubmissionController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -35,7 +37,17 @@ Route::middleware('auth:sanctum')->prefix('courses')->group(function () {
     Route::post('/{id}/enroll', [CourseController::class, 'enroll'])->name('courses.enroll');
 });
 
+// Material routes
 Route::middleware('auth:sanctum')->prefix('materials')->group(function () {
     Route::post('/', [MaterialController::class, 'upload'])->name('materials.upload');
     Route::get('/{id}/download', [MaterialController::class, 'download'])->name('materials.download');
+});
+
+// Assignment routes
+Route::post('assignments', [AssignmentController::class, 'store'])->middleware('auth:sanctum')->name('assignments.store');
+
+// Submission routes
+Route::middleware('auth:sanctum')->prefix('submissions')->group(function () {
+    Route::post('/', [SubmissionController::class, 'store'])->name('submissions.store');
+    Route::post('/{id}/grade', [SubmissionController::class, 'grade'])->name('submissions.grade');
 });
