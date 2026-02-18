@@ -1,0 +1,731 @@
+{
+  "info": {
+    "_postman_id": "fc270067-e3e8-467f-8521-1cdcaf77c7d9",
+    "name": "API e learning kampus",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "28268474"
+  },
+  "item": [
+    {
+      "name": "Authenticate",
+      "item": [
+        {
+          "name": "Register",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "name",
+                  "value": "long",
+                  "type": "text",
+                  "uuid": "a2b194f1-db55-4525-a208-5dfbd0dedab3"
+                },
+                {
+                  "key": "email",
+                  "value": "lek@gmail.com",
+                  "type": "text",
+                  "uuid": "567a7cef-785f-43ff-87ac-67f74a0758b3"
+                },
+                {
+                  "key": "password",
+                  "value": "password",
+                  "type": "text",
+                  "uuid": "24dd494d-05fb-4fc6-8899-86292b72b77a"
+                },
+                {
+                  "key": "password_confirmation",
+                  "value": "password",
+                  "type": "text",
+                  "uuid": "d4e2c328-6565-4fe0-a4a1-62cd5d251120"
+                },
+                {
+                  "key": "role",
+                  "value": "student",
+                  "type": "text",
+                  "uuid": "03f03140-2a32-45d9-acf1-8674610a1524"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{Base_url}}/register",
+              "host": [
+                "{{Base_url}}"
+              ],
+              "path": [
+                "register"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "email",
+                  "value": "lek@gmail.com",
+                  "type": "text",
+                  "uuid": "567a7cef-785f-43ff-87ac-67f74a0758b3"
+                },
+                {
+                  "key": "password",
+                  "value": "password",
+                  "type": "text",
+                  "uuid": "24dd494d-05fb-4fc6-8899-86292b72b77a"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{Base_url}}/login",
+              "host": [
+                "{{Base_url}}"
+              ],
+              "path": [
+                "login"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Logout",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "1|qV9IbC4O3o5NgKkWs8B53k4TH28lzicJQnoIuxyV69c860c2",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{Base_url}}/logout",
+              "host": [
+                "{{Base_url}}"
+              ],
+              "path": [
+                "logout"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Courses",
+      "item": [
+        {
+          "name": "Get All Courses",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{Base_url}}/courses",
+              "host": [
+                "{{Base_url}}"
+              ],
+              "path": [
+                "courses"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Courses",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"lecturer_id\": 1,\r\n    \"name\": \"New Web Programing\",\r\n    \"description\": \"Web Hacking Parah adalah ...\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{Base_url}}/courses",
+              "host": [
+                "{{Base_url}}"
+              ],
+              "path": [
+                "courses"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Enroll Course",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{Base_url}}/courses/6/enroll",
+              "host": [
+                "{{Base_url}}"
+              ],
+              "path": [
+                "courses",
+                "6",
+                "enroll"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Courses",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"lecturer_id\": 1,\r\n    \"name\": \"Programming WPU  555\",\r\n    \"description\": \"Programming WPU 2222222 adalah ...\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{Base_url}}/courses/5",
+              "host": [
+                "{{Base_url}}"
+              ],
+              "path": [
+                "courses",
+                "5"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Courses",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"lecturer_id\": 1,\r\n    \"name\": \"Web pantester\",\r\n    \"description\": \"Web pantester adalah ...\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{Base_url}}/courses/5",
+              "host": [
+                "{{Base_url}}"
+              ],
+              "path": [
+                "courses",
+                "5"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": [
+          {
+            "key": "token",
+            "value": "3|DAHm7JiNv1EratYtAd5wMs4Zqnrm1kpAoLKQdnEgbe23334c",
+            "type": "string"
+          }
+        ]
+      },
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {},
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {},
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Materials",
+      "item": [
+        {
+          "name": "Upload Materi",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "course_id",
+                  "value": "3",
+                  "type": "text",
+                  "uuid": "2bcb7bbb-36de-4f8d-9ca6-d80f77cb2922"
+                },
+                {
+                  "key": "title",
+                  "value": "Web Scraping 1222",
+                  "type": "text",
+                  "uuid": "ee495fd8-382d-42ed-b843-7fc3ece9531a"
+                },
+                {
+                  "key": "file",
+                  "type": "file",
+                  "uuid": "37b750ea-7bbf-430e-9764-a50723d59207",
+                  "src": "/C:/Users/edlym/Downloads/Edly Mulya Andeslin.pdf"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{Base_url}}/materials",
+              "host": [
+                "{{Base_url}}"
+              ],
+              "path": [
+                "materials"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Download Materi",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{Base_url}}/materials/2/download",
+              "host": [
+                "{{Base_url}}"
+              ],
+              "path": [
+                "materials",
+                "2",
+                "download"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": [
+          {
+            "key": "token",
+            "value": "Enrolled in course successfully",
+            "type": "string"
+          }
+        ]
+      },
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {},
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {},
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Assignments and submissions",
+      "item": [
+        {
+          "name": "Create Assignments",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"course_id\": 4,\r\n    \"title\": \"Tugas hacking \",\r\n    \"description\": \"Web hacking description ....\",\r\n    \"deadline\": \"2025-10-10 10:00:00\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{Base_url}}/assignments",
+              "host": [
+                "{{Base_url}}"
+              ],
+              "path": [
+                "assignments"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Submissions",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "assignment_id",
+                  "value": "1",
+                  "type": "text",
+                  "uuid": "65b73fc1-135b-4c08-b9fa-c1b832afa364"
+                },
+                {
+                  "key": "student_id",
+                  "value": "1",
+                  "type": "text",
+                  "uuid": "ec549920-c0b2-4ab9-a0fd-bde57abebaf9"
+                },
+                {
+                  "key": "filepath",
+                  "type": "file",
+                  "uuid": "8ad25421-4066-4d0f-9d1b-a673fd1d0dcd",
+                  "src": "/C:/Users/edlym/Downloads/Edly Mulya Andeslin.pdf"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{Base_url}}/submissions",
+              "host": [
+                "{{Base_url}}"
+              ],
+              "path": [
+                "submissions"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Grade Submissions",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"score\": 89\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{Base_url}}/submissions/1/grade",
+              "host": [
+                "{{Base_url}}"
+              ],
+              "path": [
+                "submissions",
+                "1",
+                "grade"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": [
+          {
+            "key": "token",
+            "value": "3|DAHm7JiNv1EratYtAd5wMs4Zqnrm1kpAoLKQdnEgbe23334c",
+            "type": "string"
+          }
+        ]
+      },
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {},
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {},
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Discussions",
+      "item": [
+        {
+          "name": "Create Discussions",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"course_id\": 3,\r\n    \"user_id\": 1,\r\n    \"content\": \"I have throuble about web scraping tools in\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{Base_url}}/discussions",
+              "host": [
+                "{{Base_url}}"
+              ],
+              "path": [
+                "discussions"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Replies",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"user_id\": 1,\r\n    \"content\": \"Damn love 4\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{Base_url}}/discussions/1/replies",
+              "host": [
+                "{{Base_url}}"
+              ],
+              "path": [
+                "discussions",
+                "1",
+                "replies"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": [
+          {
+            "key": "token",
+            "value": "3|DAHm7JiNv1EratYtAd5wMs4Zqnrm1kpAoLKQdnEgbe23334c",
+            "type": "string"
+          }
+        ]
+      },
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {},
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {},
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Reports",
+      "item": [
+        {
+          "name": "Mahasiswa per Matkul",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{Base_url}}/reports/courses",
+              "host": [
+                "{{Base_url}}"
+              ],
+              "path": [
+                "reports",
+                "courses"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Total Assignment",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{Base_url}}/reports/assignments",
+              "host": [
+                "{{Base_url}}"
+              ],
+              "path": [
+                "reports",
+                "assignments"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Statistik Students",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{Base_url}}/reports/students/1",
+              "host": [
+                "{{Base_url}}"
+              ],
+              "path": [
+                "reports",
+                "students",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": [
+          {
+            "key": "token",
+            "value": "5|Q8fmMJGCxljDxwnGberfFISmFV3ykETlwW4dDtmRb0b3d0d1",
+            "type": "string"
+          }
+        ]
+      },
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {},
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {},
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "Base_url",
+      "value": ""
+    }
+  ]
+}
