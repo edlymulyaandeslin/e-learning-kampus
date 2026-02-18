@@ -32,7 +32,7 @@ class Handler extends ExceptionHandler
     public function unauthenticated($request, AuthenticationException $exception)
     {
         return response()->json([
-            'message' => 'Unauthorized.'
+            'message' => 'Unauthenticated.'
         ], 401);
     }
 }

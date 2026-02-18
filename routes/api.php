@@ -33,25 +33,29 @@ Route::post('logout', [AuthController::class, 'logout'])->middleware('auth:sanct
 // Course routes
 Route::middleware('auth:sanctum')->prefix('courses')->group(function () {
     Route::get('/', [CourseController::class, 'index'])->name('courses.index');
-    Route::post('/', [CourseController::class, 'store'])->name('courses.store');
-    Route::put('/{id}', [CourseController::class, 'update'])->name('courses.update');
-    Route::delete('/{id}', [CourseController::class, 'destroy'])->name('courses.destroy');
-    Route::post('/{id}/enroll', [CourseController::class, 'enroll'])->name('courses.enroll');
+
+    Route::middleware('isLecturer')->group(function () {
+        Route::post('/', [CourseController::class, 'store'])->name('courses.store');
+        Route::put('/{id}', [CourseController::class, 'update'])->name('courses.update');
+        Route::delete('/{id}', [CourseController::class, 'destroy'])->name('courses.destroy');
+    });
+
+    Route::post('/{id}/enroll', [CourseController::class, 'enroll'])->middleware('isStudent')->name('courses.enroll');
 });
 
 // Material routes
 Route::middleware('auth:sanctum')->prefix('materials')->group(function () {
-    Route::post('/', [MaterialController::class, 'upload'])->name('materials.upload');
-    Route::get('/{id}/download', [MaterialController::class, 'download'])->name('materials.download');
+    Route::post('/', [MaterialController::class, 'upload'])->middleware('isLecturer')->name('materials.upload');
+    Route::get('/{id}/download', [MaterialController::class, 'download'])->middleware('isStudent')->name('materials.download');
 });
 
 // Assignment routes
-Route::post('assignments', [AssignmentController::class, 'store'])->middleware('auth:sanctum')->name('assignments.store');
+Route::post('assignments', [AssignmentController::class, 'store'])->middleware('auth:sanctum')->middleware('isLecturer')->name('assignments.store');
 
 // Submission routes
 Route::middleware('auth:sanctum')->prefix('submissions')->group(function () {
-    Route::post('/', [SubmissionController::class, 'store'])->name('submissions.store');
-    Route::post('/{id}/grade', [SubmissionController::class, 'grade'])->name('submissions.grade');
+    Route::post('/', [SubmissionController::class, 'store'])->middleware('isStudent')->name('submissions.store');
+    Route::post('/{id}/grade', [SubmissionController::class, 'grade'])->middleware('isLecturer')->name('submissions.grade');
 });
 
 // Discussion routes
